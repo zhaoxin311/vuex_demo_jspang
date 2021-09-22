@@ -5,14 +5,15 @@ Vue.use(Vuex);
 
 //vuex是一个数据仓库 也是一个状态管理器
 //声明一个常量 state 相当于一个状态
+//state 状态对象 count是一个共享值
 const state = {
   count: 10,
 };
 //用于改变状态state里的值，里边可以写一些方法
-//state 状态对象 count是一个共享值
+//mutations 意义在于写方法改变状态
 const mutations = {
-  add(state) {
-    state.count++;
+  add(state, n) {
+    state.count += n;
   },
   cut(state) {
     state.count--;

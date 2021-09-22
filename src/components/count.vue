@@ -1,10 +1,10 @@
 <template>
   <div>
     <h5>{{ message }}</h5>
-    <h3>{{ $store.state.count }}--{{ count }}</h3>
+    <h3>{{ count }}</h3>
     <p>
-      <button @click="$store.commit('add')">+</button>
-      <button @click="$store.commit('cut')">-</button>
+      <button @click="add(4)">+</button>
+      <button @click="cut">-</button>
     </p>
     <hr />
     <h4>** 一、通过computed的计算属性直接赋值**</h4>
@@ -24,11 +24,19 @@
     <hr />
     <h4>** 三、通过mapState的数组来赋值**</h4>
     <span>最简单的写法,也是最实用的：computed:mapState(["count"])</span>
+    <hr />
+    <hr />
+    <h4>** 模板获取Mutations方法 **</h4>
+    <span
+      >1.在模板count.vue里用import 引入我们的mapMutat <br />
+
+      2.在模板的script标签里添加methods属性，并加入mapMutations</span
+    >
   </div>
 </template>
 <script>
 import store from "@/store/index";
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
   data() {
     return {
@@ -50,6 +58,7 @@ export default {
 
   //第三种方式
   computed: mapState(["count"]),
+  methods: mapMutations(["add", "cut"]),
   store,
 };
 </script>
