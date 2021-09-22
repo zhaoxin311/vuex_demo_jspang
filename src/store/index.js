@@ -9,6 +9,7 @@ const state = {
   count: 10,
 };
 //用于改变状态state里的值，里边可以写一些方法
+//state 状态对象 count是一个共享值
 const mutations = {
   add(state) {
     state.count++;
