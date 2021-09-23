@@ -3,8 +3,12 @@
     <h5>{{ message }}</h5>
     <h3>{{ count }}</h3>
     <p>
-      <button @click="add(4)">+</button>
+      <button @click="add(5)">+</button>
       <button @click="cut">-</button>
+    </p>
+    <p>
+      <button @click="addAction(10)">+</button>
+      <button @click="cutAction">-</button>
     </p>
     <hr />
     <h4>** 一、通过computed的计算属性直接赋值**</h4>
@@ -32,11 +36,18 @@
 
       2.在模板的script标签里添加methods属性，并加入mapMutations</span
     >
+    <hr />
+    <hr />
+    <h3>actions异步修改状态</h3>
+    <span
+      >actions和之前讲的Mutations功能基本一样， <br />
+      不同点是，actions是异步的改变state状态，而Mutations是同步改变状态</span
+    >
   </div>
 </template>
 <script>
 import store from "@/store/index";
-import { mapState, mapMutations, mapGetters } from "vuex";
+import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -68,7 +79,10 @@ export default {
     //简写
     ...mapGetters(["count"]),
   },
-  methods: mapMutations(["add", "cut"]),
+  methods: {
+    ...mapMutations(["add", "cut"]),
+    ...mapActions(["addAction", "cutAction"]),
+  },
   store,
 };
 </script>

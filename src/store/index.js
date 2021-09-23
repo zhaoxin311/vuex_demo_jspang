@@ -20,14 +20,27 @@ const mutations = {
   },
 };
 const getters = {
-  count: (state) => (state.count += 100),
+  count: (state) => (state.count += 0),
 };
-
+const actions = {
+  // context：上下文对象，这里你可以理解称store本身。
+  // {commit}：直接把commit对象传递过来，可以让方法体逻辑和代码更清晰明了。
+  addAction(context) {
+    context.commit("add", 10);
+    setTimeout(() => {
+      context.commit("cut");
+    }, 3000);
+    console.log("我比cut提前执行");
+  },
+  cutAction({ commit }) {
+    commit("cut");
+  },
+};
 //用export default 封装代码，让外部可以引用。
 export default new Vuex.Store({
   state,
   mutations,
   getters,
-  actions: {},
+  actions,
   modules: {},
 });
