@@ -11,6 +11,14 @@
       <button @click="cutAction">-</button>
     </p>
     <hr />
+    <p>
+      <strong
+        >** 在模板中使用 **<br />
+        module 模块组 不实用<br />
+        要在模板中使用count状态，要用插值的形式写入。</strong
+      >
+    </p>
+    <hr />
     <h4>** 一、通过computed的计算属性直接赋值**</h4>
     <span
       >computed属性可以在输出前，对data中的值进行改变，我们就利用这种特性把store/index.js中的state值赋值给我们模板中的data值。

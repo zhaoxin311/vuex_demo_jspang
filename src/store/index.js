@@ -36,11 +36,18 @@ const actions = {
     commit("cut");
   },
 };
-//用export default 封装代码，让外部可以引用。
-export default new Vuex.Store({
+//module：状态管理器的模块组操作。
+const moduleA = {
   state,
   mutations,
   getters,
   actions,
-  modules: {},
+};
+//用export default 封装代码，让外部可以引用。
+export default new Vuex.Store({
+  // state,
+  // mutations,
+  // getters,
+  // actions,
+  modules: { a: moduleA },
 });
