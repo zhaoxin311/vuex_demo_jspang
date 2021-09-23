@@ -36,7 +36,7 @@
 </template>
 <script>
 import store from "@/store/index";
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations, mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -57,7 +57,17 @@ export default {
   // }),
 
   //第三种方式
-  computed: mapState(["count"]),
+  // computed: mapState(["count"]),
+
+  computed: {
+    ...mapState(["count"]), //es6 扩展运算符：...
+    //复杂的写法
+    // count() {
+    //   return this.$store.getters.count;
+    // },
+    //简写
+    ...mapGetters(["count"]),
+  },
   methods: mapMutations(["add", "cut"]),
   store,
 };

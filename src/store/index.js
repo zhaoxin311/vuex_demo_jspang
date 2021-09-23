@@ -19,11 +19,15 @@ const mutations = {
     state.count--;
   },
 };
+const getters = {
+  count: (state) => (state.count += 100),
+};
 
 //用export default 封装代码，让外部可以引用。
 export default new Vuex.Store({
   state,
   mutations,
+  getters,
   actions: {},
   modules: {},
 });
